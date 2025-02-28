@@ -1,7 +1,7 @@
 # BONK
 
 ![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK)
- ![Go Version](https://img.shields.io/badge/go-1.18%2B-blue) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
+![Go Version](https://img.shields.io/badge/go-1.23.6-blue) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
 
 
 A mighty command-line tool for bonking your friends, enemies, or inanimate objects! Keep track of exactly how many times you've bonked anything with persistent cloud-based bonking statistics.
