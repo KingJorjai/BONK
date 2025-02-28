@@ -38,7 +38,7 @@ You need Go 1.18 or higher installed on your system.
 ```bash
 # Clone the repository
 git clone https://github.com/KingJorjai/BONK.git
-cd bonk
+cd BONK
 
 # Install the project
 go install
@@ -50,12 +50,12 @@ Bonking is as simple as pointing and... well, bonking!
 
 ```bash
 # Basic usage
-./bonk <name>
+BONK <name>
 
 # Examples
-./bonk keyboard
-./bonk mondayMornings
-./bonk bugs
+BONK keyboard
+BONK mondayMornings
+BONK bugs
 ```
 
 ### Example Output
@@ -81,18 +81,18 @@ For true bonking connoisseurs, try these pro moves:
 
 ```bash
 # Bonk scheduled tasks
-0 9 * * * /path/to/bonk mondayMornings
+0 9 * * * BONK mondayMornings
 
 # Count how many times you've bonked something
-./bonk coffee > /dev/null && echo "I need more coffee!"
+BONK coffee > /dev/null && echo "I need more coffee!"
 
 # Multi-bonking with a for loop
-for i in {1..5}; do ./bonk keyboard; done
+for i in {1..5}; do BONK keyboard; done
 ```
 
 ## Troubleshooting
 
-**Q: My bonk was denied!**  
+**Q: My BONK was denied!**  
 A: Make sure you're using only letters and numbers, no spaces or special characters.
 
 **Q: The API isn't responding!**  
@@ -121,7 +121,7 @@ go mod tidy
 go test ./...
 
 # Build for development
-go build -o bonk
+go build
 ```
 
 ### Contribution Guidelines
