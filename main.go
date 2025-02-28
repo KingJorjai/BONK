@@ -9,8 +9,12 @@ import (
 )
 
 func main() {
-	topBonked := flag.Bool("top", false, "top")
+	// Set up environment variables
+	os.Setenv("BONK_API_URL", "https://api.counterapi.dev/v1")
+	os.Setenv("BONK_API_NAMESPACE", "bonk.jorjai.net")
 
+	// Parse command line flags
+	topBonked := flag.Bool("top", false, "top")
 	flag.Parse()
 
 	args := flag.Args()
