@@ -62,14 +62,14 @@ func main() {
 	bonkNumber := bonk(name)
 
 	fmt.Println(ASCII_ART)
-	fmt.Printf("You bonked %s.\n", name)
-	fmt.Printf("%s was bonked %d times.\n", name, bonkNumber)
+	fmt.Printf("You gave %s a mighty BONK!\n", name)
+	fmt.Printf("%s has been bonked %d times! BONK BONK!\n", name, bonkNumber)
 	os.Exit(0)
 }
 
 func bonk(name string) int {
 	// Validate that name only contains alphanumeric characters and is between 1-100 characters
-	match, _ := regexp.MatchString("^[a-zA-Z0-9]{1,100}$", name)
+	match, _ := regexp.MatchString("^[\\p{L}\\p{N}]{1,100}$", name)
 	if !match {
 		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
 		os.Exit(1)
