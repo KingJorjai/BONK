@@ -69,7 +69,7 @@ func main() {
 
 func bonk(name string) int {
 	// Validate that name only contains alphanumeric characters and is between 1-100 characters
-	match, _ := regexp.MatchString("^[\\p{L}\\p{N}]{1,100}$", name)
+	match, _ := regexp.MatchString("^[\\p{L}\\p{N} ]{1,100}$", name)
 	if !match {
 		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
 		os.Exit(1)
