@@ -56,5 +56,4 @@ func Bonk(name string) {
 	fmt.Println(ASCII_ART)
 	fmt.Printf("You gave %s a mighty BONK!\n", name)
 	fmt.Printf("%s has been bonked %d times! BONK BONK!\n", name, bonkNumber)
-	os.Exit(0)
 }
