@@ -1,19 +1,15 @@
 package cli
 
 import (
-	"encoding/json"
 	"fmt"
-	"net/http"
 	"os"
 	"regexp"
-	"time"
+
+	"github.com/KingJorjai/BONK/pkg/api"
 )
 
 const (
-	// The URL of the API
-	API_URL       = "https://api.counterapi.dev/v1"
-	API_NAMESPACE = "bonk.jorjai.net"
-	ASCII_ART     = `⠀⠀⠀⠀⠀⠀⢀⣁⣤⣶⣶⡒⠒⠲⠾⣭⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	ASCII_ART = `⠀⠀⠀⠀⠀⠀⢀⣁⣤⣶⣶⡒⠒⠲⠾⣭⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⣿⡀⣸⠟⠛⠃⠀⣀⣀⠈⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⡠⠂⢠⠏⠀⠉⠀⠀⠀⠰⣿⠟⠀⠙⢧⡀⠀⠀⠀⠀⠀⠀⢀⠀⠀⢀⢀⡀⣼⣧⡾⠃⠀⠀⠀⠀⠀
 ⢀⠔⠀⣠⠔⠁⠀⠀⠀⠀⠀⠀⠀⠰⢄⡠⣶⢾⣽⡆⠀⠀⠀⠀⠄⢡⡀⢰⣾⣿⡀⠈⠵⠟⠛⠀⠀⠀⠀⠀
@@ -31,23 +27,22 @@ const (
 ⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠤⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
 )
 
-type Namespace struct {
-	ID        int       `json:"id"`
-	Name      string    `json:"name"`
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
-}
-
-type CountApiResponse struct {
-	ID          int       `json:"id"`
-	Name        string    `json:"name"`
-	Count       int       `json:"count"`
-	CreatedAt   time.Time `json:"created_at"`
-	UpdatedAt   time.Time `json:"updated_at"`
-	NamespaceID int       `json:"namespace_id"`
-	Namespace   Namespace `json:"namespace"`
-}
-
+// Bonk performs a "bonk" operation on the specified entity.
+//
+// It validates that the provided name contains only letters, numbers, and spaces
+// and is between 1-100 characters long. If validation fails, it prints an error
+// message and exits with code 1.
+//
+// If validation passes, it increments a counter for this name using api.CountUp,
+// displays ASCII art, outputs bonking messages including the total number of times
+// the entity has been bonked, and exits with code 0.
+//
+// Parameters:
+//   - name: The name of the entity to bonk (must be 1-100 alphanumeric characters)
+//
+// Side effects:
+//   - Prints to stdout
+//   - Terminates the program with exit code 0 on success or 1 on validation failure
 func Bonk(name string) {
 	// Validate that name only contains alphanumeric characters and is between 1-100 characters
 	match, _ := regexp.MatchString("^[\\p{L}\\p{N} ]{1,100}$", name)
@@ -56,21 +51,7 @@ func Bonk(name string) {
 		os.Exit(1)
 	}
 
-	resp, err := http.Get(fmt.Sprintf("%s/%s/%s/up", API_URL, API_NAMESPACE, name))
-	if err != nil {
-		fmt.Println("Error while calling the API")
-		fmt.Println(err)
-		os.Exit(1)
-	}
-	defer resp.Body.Close()
-
-	var bonkNumberJson CountApiResponse
-	if err := json.NewDecoder(resp.Body).Decode(&bonkNumberJson); err != nil {
-		fmt.Println("Error while decoding the response")
-		os.Exit(1)
-	}
-
-	bonkNumber := bonkNumberJson.Count
+	bonkNumber := api.CountUp(name)
 
 	fmt.Println(ASCII_ART)
 	fmt.Printf("You gave %s a mighty BONK!\n", name)
