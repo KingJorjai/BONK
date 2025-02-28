@@ -1,0 +1,26 @@
+name: bonk
+version: '1.0.0'
+summary: BONK application
+description: |
+  A mighty command-line tool for bonking your friends, enemies, or
+  inanimate objects! Keep track of exactly how many times you've
+  bonked anything with persistent cloud-based bonking statistics.
+
+base: core24
+
+confinement: strict
+
+apps:
+  bonk:
+    command: bin/BONK
+
+parts:
+  bonk:
+    plugin: go
+    build-snaps: [go/latest/stable]
+    source: https://github.com/KingJorjai/BONK
+    source-type: git
+    override-pull: |
+      snapcraftctl pull \
+      snapcraftctl set-version \
+      "$(git describe --long --tags --always --match 'v*.*.*' | sed 's/v//')"
