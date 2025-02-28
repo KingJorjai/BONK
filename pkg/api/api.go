@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 	"time"
 )
 
@@ -38,23 +37,22 @@ const (
 //
 // Returns:
 //   - The updated count value after incrementing
-//
-// Note: This function will terminate the program with os.Exit(1) if any errors
-// occur during the API request or response parsing.
-func CountUp(name string) int {
+//   - An error if any occurs during the API request or response parsing.
+func CountUp(name string) (int, error) {
 	resp, err := http.Get(fmt.Sprintf("%s/%s/%s/up", API_URL, API_NAMESPACE, name))
 	if err != nil {
-		fmt.Println("Error while calling the API")
-		fmt.Println(err)
-		os.Exit(1)
+		return 0, fmt.Errorf("error while calling the API: %w", err)
 	}
 	defer resp.Body.Close()
 
-	var bonkNumberJson CountApiResponse
-	if err := json.NewDecoder(resp.Body).Decode(&bonkNumberJson); err != nil {
-		fmt.Println("Error while decoding the response")
-		os.Exit(1)
+	if resp.StatusCode != http.StatusOK {
+		return 0, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
 	}
 
-	return bonkNumberJson.Count
+	var bonkNumberJson CountApiResponse
+	if err := json.NewDecoder(resp.Body).Decode(&bonkNumberJson); err != nil {
+		return 0, fmt.Errorf("error while decoding the response: %w", err)
+	}
+
+	return bonkNumberJson.Count, nil
 }
