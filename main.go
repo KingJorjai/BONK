@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"regexp"
 	"time"
 )
 
@@ -67,6 +68,13 @@ func main() {
 }
 
 func bonk(name string) int {
+	// Validate that name only contains alphanumeric characters and is between 1-100 characters
+	match, _ := regexp.MatchString("^[a-zA-Z0-9]{1,100}$", name)
+	if !match {
+		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
+		os.Exit(1)
+	}
+
 	resp, err := http.Get(fmt.Sprintf("%s/%s/%s/up", API_URL, API_NAMESPACE, name))
 	if err != nil {
 		fmt.Println("Error while calling the API")
