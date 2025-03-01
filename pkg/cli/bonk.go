@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 	"regexp"
-
+	"net"
+	
 	"github.com/KingJorjai/BONK/pkg/api"
 )
 
@@ -43,6 +44,25 @@ const (
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
 )
 
+// getMacAddr attempts to get the MAC address of the user, and return it as a string
+//
+// Side effects: None 
+func getMacAddr() ([]string, error) {
+    ifas, err := net.Interfaces()
+    if err != nil {
+        return nil, err
+    }
+    var as []string
+    for _, ifa := range ifas {
+        a := ifa.HardwareAddr.String()
+        if a != "" {
+            as = append(as, a)
+        }
+    }
+    return as, nil
+}
+
+
 // Bonk performs a "bonk" operation on the specified entity.
 //
 // It validates that the provided name contains only letters, numbers, and spaces
@@ -65,6 +85,13 @@ func Bonk(name string) {
 	if !match {
 		fmt.Println(ASCII_NO_BONK)
 		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
+		userMac, er:= getMacAddr()
+		if er == nil {
+			failNumber, er := api.CountUp(userMac[0])
+			if er == nil {
+				fmt.Printf("Are you proud, bonker? %d incorrect bonks already!\n", failNumber);
+			}
+		}
 		os.Exit(1)
 	}
 
