@@ -1,5 +1,5 @@
 name: bonk
-version: '1.0.0'
+version: '1.0.3'
 summary: BONK application
 description: |
   A mighty command-line tool for bonking your friends, enemies, or
@@ -12,7 +12,7 @@ confinement: strict
 
 apps:
   bonk:
-    command: bin/BONK
+    command: bin/bonk
 
 parts:
   bonk:
