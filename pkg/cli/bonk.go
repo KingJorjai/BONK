@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"strings"
 
 	"github.com/KingJorjai/BONK/pkg/api"
 )
@@ -60,6 +61,9 @@ const (
 //   - Prints to stdout
 //   - Terminates the program with exit code 0 on success or 1 on validation failure
 func Bonk(name string) {
+	// Remove all spaces longer than one character and trim
+	name = strings.Join(strings.Fields(name), " ")
+
 	// Validate that name only contains alphanumeric characters and is between 1-100 characters
 	match, _ := regexp.MatchString("^[\\p{L}\\p{N} ]{1,100}$", name)
 	if !match {
