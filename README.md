@@ -1,10 +1,9 @@
+![GitHub Repo stars](https://img.shields.io/github/stars/KingJorjai/BONK?style=for-the-badge)
+![GitHub contributors](https://img.shields.io/github/contributors/KingJorjai/BONK?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK?style=for-the-badge)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/KingJorjai/BONK?style=for-the-badge)
+
 # BONK
-
-![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/KingJorjai/BONK)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
-![GitHub contributors](https://img.shields.io/github/contributors/KingJorjai/BONK)
-
 
 A mighty command-line tool for bonking your friends, enemies, or inanimate objects! Keep track of exactly how many times you've bonked anything with persistent cloud-based bonking statistics.
 
@@ -37,12 +36,27 @@ A mighty command-line tool for bonking your friends, enemies, or inanimate objec
 ## Installation
 
 ### Method 1: Using a package manager
+
 #### Snap Store
 ![Snapcraft Version](https://img.shields.io/snapcraft/v/:package/:track/:risk)
 ![Snapcraft Last Update](https://img.shields.io/snapcraft/last-update/bonk/latest/stable)
+![Snapcraft License](https://img.shields.io/snapcraft/l/bonk)
 
 ```bash
 snap install bonk 
+```
+
+#### AUR (Arch User Repository)
+
+![AUR Votes](https://img.shields.io/aur/votes/bonk)
+![AUR Version](https://img.shields.io/aur/version/bonk)
+![AUR Last Modified](https://img.shields.io/aur/last-modified/bonk)
+![AUR Maintainer](https://img.shields.io/aur/maintainer/bonk)
+![AUR License](https://img.shields.io/aur/license/bonk)
+
+```bash
+# https://aur.archlinux.org/packages/bonk
+yay -S bonk
 ```
 
 ### Method 2: Manually download the binaries
@@ -55,6 +69,9 @@ You can download the latest release binaries from the [**releases page**](https:
 
 > [!IMPORTANT]
 > Is required to have a **Go** installation. 
+
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/KingJorjai/BONK)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
 
 ```bash
 # Clone the repository
