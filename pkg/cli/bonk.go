@@ -83,5 +83,14 @@ func Bonk(name string) {
 
 	fmt.Println(ASCII_BONK)
 	fmt.Printf("You gave %s a mighty BONK!\n", name)
-	fmt.Printf("%s has been bonked %d times! BONK BONK!\n", name, bonkNumber)
+	fmt.Printf("%s has been bonked %d time%s! BONK BONK!\n", name, bonkNumber, pluralize(bonkNumber))
+}
+
+// pluralize returns "s" if the count is not equal to 1, otherwise it returns an empty string.
+// This is useful for pluralizing words based on the count.
+func pluralize(count int) string {
+	if count == 1 {
+		return ""
+	}
+	return "s"
 }
