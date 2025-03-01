@@ -1,7 +1,9 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/KingJorjai/BONK?style=for-the-badge)
 ![GitHub contributors](https://img.shields.io/github/contributors/KingJorjai/BONK?style=for-the-badge)
 ![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK?style=for-the-badge)
+
 ![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/KingJorjai/BONK?style=for-the-badge)
+![GitHub Issues or Pull Requests](https://img.shields.io/github/issues-pr/KingJorjai/BONK?style=for-the-badge)
 
 # BONK
 
