@@ -1,7 +1,9 @@
 # BONK
 
 ![GitHub License](https://img.shields.io/github/license/KingJorjai/BONK)
-![Go Version](https://img.shields.io/badge/go-1.23.6-blue) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/KingJorjai/BONK)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/KingJorjai/BONK/go.yml)
+![GitHub contributors](https://img.shields.io/github/contributors/KingJorjai/BONK)
 
 
 A mighty command-line tool for bonking your friends, enemies, or inanimate objects! Keep track of exactly how many times you've bonked anything with persistent cloud-based bonking statistics.
@@ -27,15 +29,32 @@ A mighty command-line tool for bonking your friends, enemies, or inanimate objec
 
 ## Features
 
-- 🔨 **Bonk** anybody or anything with the power of command-line tools!
-- 🔢 **Track** bonking statistics persistently in the cloud
-- 🖼️ **Display** delightful ASCII art with each successful BONK
-- 🌐 **Cloud-based** bonking memory powered by *counterapi.dev*
+- 🔨 **BONK** anybody or anything with the power of  your command-line!
+- 🖼️ **Display** delightful ASCII art with each successful BONK.
+- 🌐 **Cloud-based** bonking memory powered by *counterapi.dev* to spread your bonks around the globe.
 - 💨 **Fast** and efficient bonking, written in Go
 
 ## Installation
 
-You need Go 1.18 or higher installed on your system.
+### Method 1: Using a package manager
+#### Snap Store
+![Snapcraft Version](https://img.shields.io/snapcraft/v/:package/:track/:risk)
+![Snapcraft Last Update](https://img.shields.io/snapcraft/last-update/bonk/latest/stable)
+
+```bash
+snap install bonk 
+```
+
+### Method 2: Manually download the binaries
+[![GitHub Release](https://img.shields.io/github/v/release/KingJorjai/BONK)](https://github.com/KingJorjai/BONK/releases/latest)
+![GitHub Release Date](https://img.shields.io/github/release-date/KingJorjai/BONK)
+
+You can download the latest release binaries from the [**releases page**](https://github.com/KingJorjai/BONK/releases/).
+
+### Method 3: Building from source
+
+> [!IMPORTANT]
+> Is required to have a **Go** installation. 
 
 ```bash
 # Clone the repository
@@ -70,35 +89,22 @@ You gave bugs a mighty BONK!
 bugs has been bonked 42 times! BONK BONK!
 ```
 
-## Rules of Bonking
-
-1. Names must be 1-100 characters long
-2. Only alphanumeric characters are allowed
-3. No spaces or special characters (we're strict bonkers here!)
-4. You can't bonk the void (empty names are not allowed)
-
-## Advanced Bonking Techniques
+### Advanced Bonking Techniques
 
 For true bonking connoisseurs, try these pro moves:
 
 ```bash
 # Bonk scheduled tasks
-0 9 * * * BONK mondayMornings
-
+0 9 * * 1 BONK mondayMornings
+```
+```bash
 # Count how many times you've bonked something
 BONK coffee > /dev/null && echo "I need more coffee!"
-
+```
+```bash
 # Multi-bonking with a for loop
 for i in {1..5}; do BONK keyboard; done
 ```
-
-## Troubleshooting
-
-**Q: My BONK was denied!**  
-A: Make sure you're using only letters and numbers, no spaces or special characters.
-
-**Q: The API isn't responding!**  
-A: The bonking servers might be overloaded with bonk requests. Please try again later.
 
 ## Contributing
 
@@ -133,14 +139,6 @@ go build
 - Update documentation when needed
 - Follow Go best practices
 - Make your BONKs count!
-
-### Feature Ideas
-
-- Multi-bonking capabilities
-- Bonk statistics dashboard
-- Custom BONK ASCII art
-- Bonk scheduling and reminders
-- Competitive BONK leaderboards
 
 Remember: with great BONK comes great responsibility!
 
