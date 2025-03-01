@@ -26,3 +26,6 @@ go.work.sum
 
 # VS Code
 .vscode/
+
+# GoReleaser
+dist/
