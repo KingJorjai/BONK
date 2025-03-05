@@ -29,3 +29,6 @@ go.work.sum
 
 # GoReleaser
 dist/
+
+# Snap
+*.snap
