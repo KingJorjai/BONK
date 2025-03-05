@@ -42,3 +42,40 @@ func CountUp(name string) (int, error) {
 
 	return int(bonkNumberJson.Bonks), nil
 }
+
+func GetTopBonked() ([]Bonkee, error) {
+	// Create the request
+	req, err := http.NewRequest(
+		"GET", fmt.Sprintf("%s/bonkees", os.Getenv("BONK_API_URL")),
+		nil)
+	if err != nil {
+		return nil, fmt.Errorf("error while creating the http request: %w", err)
+	}
+
+	// Add the parameters
+	q := req.URL.Query()
+	q.Add("limit", "10")
+	q.Add("sort_by", "bonks")
+	q.Add("order", "DESC")
+	req.URL.RawQuery = q.Encode()
+
+	// Do the request
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error while calling the API: %w", err)
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		return nil, fmt.Errorf("unexpected status code: %d", resp.StatusCode)
+	}
+
+	// Parse the response
+	var topBonked []Bonkee
+	if err := json.NewDecoder(resp.Body).Decode(&topBonked); err != nil {
+		return nil, fmt.Errorf("error while decoding the response: %w", err)
+	}
+
+	return topBonked, nil
+}

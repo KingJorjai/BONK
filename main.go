@@ -13,9 +13,16 @@ func main() {
 	os.Setenv("BONK_API_URL", "http://143.47.47.64:25572/api")
 
 	// Parse command line flags
-	topBonked := flag.Bool("top", false, "top")
+	topBonked := flag.Bool("top", false, "Show the top bonked")
 	flag.Parse()
 
+	// Flag specific execution
+	if *topBonked {
+		cli.TopBonked()
+		os.Exit(0)
+	}
+
+	// Default execution
 	args := flag.Args()
 	if len(args) != 1 {
 		fmt.Println("Usage: " + os.Args[0] + " <name>")
@@ -23,10 +30,6 @@ func main() {
 	}
 	name := args[0]
 	cli.Bonk(name)
-
-	if *topBonked {
-		// TODO Implement
-	}
 
 	os.Exit(0)
 }
