@@ -10,8 +10,7 @@ import (
 
 func main() {
 	// Set up environment variables
-	os.Setenv("BONK_API_URL", "https://api.counterapi.dev/v1")
-	os.Setenv("BONK_API_NAMESPACE", "bonk.jorjai.net")
+	os.Setenv("BONK_API_URL", "http://143.47.47.64:25572/api")
 
 	// Parse command line flags
 	topBonked := flag.Bool("top", false, "top")

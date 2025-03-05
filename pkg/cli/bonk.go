@@ -47,7 +47,7 @@ const (
 // Bonk performs a "bonk" operation on the specified entity.
 //
 // It validates that the provided name contains only letters, numbers, and spaces
-// and is between 1-100 characters long. If validation fails, it prints an error
+// and is between 1-255 characters long. If validation fails, it prints an error
 // message and exits with code 1.
 //
 // If validation passes, it increments a counter for this name using api.CountUp,
@@ -55,20 +55,20 @@ const (
 // the entity has been bonked, and exits with code 0.
 //
 // Parameters:
-//   - name: The name of the entity to bonk (must be 1-100 alphanumeric characters)
+//   - name: The name of the entity to bonk (must be 1-255 alphanumeric characters)
 //
 // Side effects:
 //   - Prints to stdout
-//   - Terminates the program with exit code 0 on success or 1 on validation failure
+//   - Terminates the program with exit code 1 on validation failure
 func Bonk(name string) {
 	// Remove all spaces longer than one character and trim
 	name = strings.Join(strings.Fields(name), " ")
 
-	// Validate that name only contains alphanumeric characters and is between 1-100 characters
-	match, _ := regexp.MatchString("^[\\p{L}\\p{N} ]{1,100}$", name)
+	// Validate that name only contains alphanumeric characters and is between 1-255 characters
+	match, _ := regexp.MatchString("^[\\p{L}\\p{N} ]{1,255}$", name)
 	if !match {
 		fmt.Println(ASCII_NO_BONK)
-		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-100 characters). No bonking the void!")
+		fmt.Println("BONK DENIED! That name is too sus. Use only letters and numbers (1-255 characters). No bonking the void!")
 		os.Exit(1)
 	}
 
