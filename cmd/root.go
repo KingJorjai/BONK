@@ -11,8 +11,9 @@ import (
 )
 
 var (
-	version     bool
-	leaderboard bool
+	checkUpdates bool
+	leaderboard  bool
+	version      bool
 )
 
 var rootCmd = &cobra.Command{
@@ -32,6 +33,12 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
+		if checkUpdates {
+			cli.CheckForUpdates()
+			return
+
+		}
+
 		// If no name is specified, print usage
 		if len(args) == 0 {
 			cmd.Usage()
@@ -45,9 +52,16 @@ var rootCmd = &cobra.Command{
 }
 
 func init() {
-	// Define the --leaderboard flag
-	rootCmd.Flags().BoolVarP(&leaderboard, "leaderboard", "l", false, "Show the most bonked in a leaderboard")
-	rootCmd.Flags().BoolVarP(&version, "version", "v", false, "Show the current version")
+	rootCmd.CompletionOptions.DisableDefaultCmd = true
+	rootCmd.CompletionOptions.DisableDescriptions = true
+	rootCmd.CompletionOptions.DisableNoDescFlag = true
+	rootCmd.DisableAutoGenTag = true
+
+	rootCmd.Flags().BoolVarP(&leaderboard, "leaderboard", "l", false, "show the most bonked in a leaderboard")
+	rootCmd.Flags().BoolVarP(&version, "version", "v", false, "show the current version")
+	rootCmd.Flags().BoolVarP(&checkUpdates, "check-updates", "u", false, "checks for new updates")
+
+	rootCmd.MarkFlagsMutuallyExclusive("leaderboard", "version", "check-updates")
 }
 
 func Execute() {
