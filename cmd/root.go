@@ -6,10 +6,12 @@ import (
 	"os"
 
 	"github.com/KingJorjai/BONK/pkg/cli"
+	"github.com/KingJorjai/BONK/pkg/utils"
 	"github.com/spf13/cobra"
 )
 
 var (
+	version     bool
 	leaderboard bool
 )
 
@@ -19,6 +21,11 @@ var rootCmd = &cobra.Command{
 	Long:  `BONK is a CLI tool for bonking people and showing leaderboards.`,
 	Args:  cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
+		// If the --version flag is set, show the version
+		if version {
+			fmt.Printf("BONK v%s\n", utils.AppVersion)
+			return
+		}
 		// If the --leaderboard flag is set, show the leaderboard
 		if leaderboard {
 			cli.ShowLeaderboard()
@@ -40,6 +47,7 @@ var rootCmd = &cobra.Command{
 func init() {
 	// Define the --leaderboard flag
 	rootCmd.Flags().BoolVarP(&leaderboard, "leaderboard", "l", false, "Show the most bonked in a leaderboard")
+	rootCmd.Flags().BoolVarP(&version, "version", "v", false, "Show the current version")
 }
 
 func Execute() {
