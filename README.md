@@ -15,15 +15,15 @@ A mighty command-line tool for bonking your friends, enemies, or inanimate objec
 
 - 🔨 **BONK** anybody or anything with the power of  your command-line!
 - 🖼️ **Display** delightful ASCII art with each successful BONK.
-- 🌐 **Cloud-based** bonking memory powered by *counterapi.dev* to spread your bonks around the globe.
-- 💨 **Fast** and efficient bonking, written in Go
+- 🌐 **Online** bonking records powered by [BONK-api](https://github.com/KingJorjai/BONK-api/) to spread your bonks around the globe.
+- 💨 **Blazingly Fast** and efficient bonking, written in Go.
 
 ## Installation
 
 ### Method 1: Using a package manager
 
 #### Snap Store
-![Snapcraft Version](https://img.shields.io/snapcraft/v/:package/:track/:risk)
+![Snapcraft Version](https://img.shields.io/snapcraft/v/bonk/latest/stable)
 ![Snapcraft Last Update](https://img.shields.io/snapcraft/last-update/bonk/latest/stable)
 ![Snapcraft License](https://img.shields.io/snapcraft/l/bonk)
 
@@ -69,19 +69,17 @@ go install
 
 ## Usage
 
+### BONK BONK Give a mighty BONK
+
 Bonking is as simple as pointing and... well, bonking!
 
-```bash
-# Basic usage
-BONK <name>
+###### Input
 
-# Examples
-BONK keyboard
-BONK mondayMornings
-BONK bugs
+```bash
+$ BONK "Georgey"
 ```
 
-### Example Output
+###### Output
 
 ```
 ⠀⠀⠀⠀⠀⠀⢀⣁⣤⣶⣶⡒⠒⠲⠾⣭⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -100,8 +98,40 @@ BONK bugs
 ⠀⠀⠀⠀⠀⠀⠀⢸⡀⠸⡄⠀⠀⠀⠀⣧⠴⠃⠉⠉⠁⠀⠀⠰⣾⡭⠔⠁⠀⠀⠀⡜⠀⡇⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠳⢤⣼⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⠀⠀⠀⠀⠀⢰⣥⣴⠃⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠤⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-You gave bugs a mighty BONK!
-bugs has been bonked 42 times! BONK BONK!
+You gave Georgey a mighty BONK!
+Georgey has been bonked 1,563,097 times! BONK BONK!
+```
+
+### ONLINE Leaderboard *(a.k.a. LeaderBONK)*
+
+Challenge the rest of the world to see who... has received the most BONKS... ??
+
+###### Input
+
+```bash
+# Both commands are equivalent
+$ BONK --leaderboard
+$ BONK -l
+```
+
+###### Output
+
+```
++-----+--------------------------+---------------+
+| NO. |           NAME           |     BONKS     |
++-----+--------------------------+---------------+
+|   1 |                     John | 15,678        |
+|   2 |                    Alice | 9,432         |
+|   3 |                      Bob | 7,890         |
+|   4 |                    Carol | 5,678         |
+|   5 |                     Dave | 4,321         |
+|   6 |                      Eve | 3,210         |
+|   7 |                    Frank | 2,109         |
+|   8 |                    Grace | 1,987         |
+|   9 |                    Heidi | 1,234         |
+|  10 |                     Ivan | 987           |
++-----+--------------------------+---------------+
+
 ```
 
 ### Advanced Bonking Techniques
