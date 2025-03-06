@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/KingJorjai/BONK/pkg/api"
+	"github.com/KingJorjai/BONK/pkg/utils"
 )
 
 func TopBonked() {
@@ -15,15 +16,15 @@ func TopBonked() {
 	}
 
 	// Format to a table and print
-	fmt.Println("+-----+--------------------------+-------+")
-	fmt.Println("| NO. |           NAME           | BONKS |")
-	fmt.Println("+-----+--------------------------+-------+")
+	fmt.Println("+-----+--------------------------+---------------+")
+	fmt.Println("| NO. |           NAME           |     BONKS     |")
+	fmt.Println("+-----+--------------------------+---------------+")
 	for i, bonk := range resp {
 		name := bonk.Name
 		if len(name) > 21 {
 			name = name[:21] + "..."
 		}
-		fmt.Printf("| %3d | %24s | %-5d |\n", i+1, name, bonk.Bonks)
+		fmt.Printf("| %3d | %24s | %-13s |\n", i+1, name, utils.CommaFormat(int64(bonk.Bonks)))
 	}
-	fmt.Println("+-----+--------------------------+-------+")
+	fmt.Println("+-----+--------------------------+---------------+")
 }
