@@ -7,7 +7,7 @@ import (
 	"github.com/KingJorjai/BONK/pkg/utils"
 )
 
-func TopBonked() {
+func ShowLeaderboard() {
 	// Retrieve the top 10 from the API
 	resp, err := api.GetTopBonked()
 	if err != nil {

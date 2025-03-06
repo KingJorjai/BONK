@@ -13,12 +13,12 @@ func main() {
 	os.Setenv("BONK_API_URL", "http://143.47.47.64:25572/api")
 
 	// Parse command line flags
-	topBonked := flag.Bool("top", false, "Show the top bonked")
+	leaderboardFlag := flag.Bool("leaderboard", false, "Show the most bonked in a leaderboard")
 	flag.Parse()
 
 	// Flag specific execution
-	if *topBonked {
-		cli.TopBonked()
+	if *leaderboardFlag {
+		cli.ShowLeaderboard()
 		os.Exit(0)
 	}
 
