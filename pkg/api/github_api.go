@@ -18,7 +18,7 @@ var (
 	}
 )
 
-func CheckForUpdate(currentVersion string) (string, error) {
+func CheckForUpdate(currentVersion string) (bool, string, error) {
 	return realGithubApiClient.CheckForUpdate(currentVersion)
 }
 
@@ -54,13 +54,13 @@ func (apiClient *GithubApiClient) GetLatestVersion() (string, error) {
 	return version, nil
 }
 
-func (apiClient *GithubApiClient) CheckForUpdate(currentVersion string) (string, error) {
+func (apiClient *GithubApiClient) CheckForUpdate(currentVersion string) (bool, string, error) {
 	latestVersion, err := apiClient.GetLatestVersion()
 	if err != nil {
-		return "", err
+		return false, "", err
 	}
 	if latestVersion != currentVersion {
-		return latestVersion, nil
+		return true, latestVersion, nil
 	}
-	return "", fmt.Errorf("no update available")
+	return false, "", nil
 }

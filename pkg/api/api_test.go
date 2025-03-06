@@ -48,15 +48,15 @@ func TestGetLatestVersion(t *testing.T) {
 
 func TestCheckForUpdate(t *testing.T) {
 	tests := []struct {
-		name           string
-		currentVersion string
-		latestVersion  string
-		expectedUpdate string
-		expectError    bool
+		name            string
+		currentVersion  string
+		latestVersion   string
+		expectedUpdate  bool
+		expectedVersion string
+		expectError     bool
 	}{
-		{"UpdateAvailable", "1.0.0", "1.1.0", "1.1.0", false},
-		{"NoUpdateAvailable", "1.1.0", "1.1.0", "", true},
-		{"InvalidCurrentVersion", "invalid", "1.1.0", "1.1.0", false},
+		{"UpdateAvailable", "1.0.0", "1.1.0", true, "1.1.0", false},
+		{"NoUpdateAvailable", "1.1.0", "1.1.0", false, "", false},
 	}
 
 	for _, test := range tests {
@@ -69,13 +69,16 @@ func TestCheckForUpdate(t *testing.T) {
 			defer server.Close()
 
 			apiClient := api.GithubApiClient{Endpoint: server.URL}
-			update, err := apiClient.CheckForUpdate(test.currentVersion)
+			update, latestVersion, err := apiClient.CheckForUpdate(test.currentVersion)
 
 			if (err != nil) != test.expectError {
 				t.Errorf("expected error: %v, got: %v", test.expectError, err)
 			}
 			if update != test.expectedUpdate {
-				t.Errorf("expected update: %s, got: %s", test.expectedUpdate, update)
+				t.Errorf("expected update: %v, got: %v", test.expectedUpdate, update)
+			}
+			if latestVersion != test.expectedVersion {
+				t.Errorf("expected update: %s, got: %s", test.expectedVersion, latestVersion)
 			}
 		})
 	}
