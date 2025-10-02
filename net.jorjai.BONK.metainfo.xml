@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="console-application">
+  <id>net.jorjai.BONK</id>
+  <name>BONK</name>
+  <summary>A mighty command-line tool for bonking your friends, enemies, or inanimate objects</summary>
+  <description>
+    <p>
+      BONK is a fun command-line tool that allows you to "bonk" anybody or anything 
+      with the power of your terminal! Keep track of exactly how many times you've 
+      bonked anything with persistent cloud-based bonking statistics.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>BONK anybody or anything with the power of your command-line!</li>
+      <li>Display delightful ASCII art with each successful BONK</li>
+      <li>Online bonking records powered by BONK-api to spread your bonks around the globe</li>
+      <li>Blazingly Fast and efficient bonking, written in Go</li>
+    </ul>
+  </description>
+  
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  
+  <url type="homepage">https://github.com/KingJorjai/BONK</url>
+  <url type="bugtracker">https://github.com/KingJorjai/BONK/issues</url>
+  <url type="vcs-browser">https://github.com/KingJorjai/BONK</url>
+  
+  <developer_name>KingJorjai</developer_name>
+  
+  <provides>
+    <binary>bonk</binary>
+  </provides>
+  
+  <categories>
+    <category>ConsoleOnly</category>
+    <category>Game</category>
+    <category>Utility</category>
+  </categories>
+  
+  <keywords>
+    <keyword>bonk</keyword>
+    <keyword>cli</keyword>
+    <keyword>command-line</keyword>
+    <keyword>game</keyword>
+  </keywords>
+  
+  <releases>
+    <release version="1.0.0" date="2025-10-02">
+      <description>
+        <p>Initial Flatpak release of BONK</p>
+      </description>
+    </release>
+  </releases>
+</component>

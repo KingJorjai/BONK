@@ -33,3 +33,12 @@ dist/
 
 # Snap
 *.snap
+
+# Flatpak build artifacts
+build-dir/
+flatpak-repo/
+.flatpak-builder/
+*.flatpak
+
+# Flatpak generated icons (if using create-icon.sh)
+icon_placeholder.txt

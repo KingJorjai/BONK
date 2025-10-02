@@ -1,0 +1,37 @@
+# Ejemplo de manifest para Flathub (net.jorjai.BONK.yml)
+
+app-id: net.jorjai.BONK
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+command: bonk
+
+finish-args:
+  - --share=network
+  - --socket=session-bus
+
+build-options:
+  append-path: /usr/lib/sdk/golang/bin
+  env:
+    GOBIN: /app/bin
+    GOCACHE: /run/build/bonk/go-build-cache
+    GOMODCACHE: /run/build/bonk/go-mod-cache
+
+modules:
+  - name: bonk
+    buildsystem: simple
+    build-commands:
+      - go build -mod=vendor -o bonk -ldflags="-s -w" .
+      - install -Dm755 bonk /app/bin/bonk
+      - install -Dm644 net.jorjai.BONK.metainfo.xml /app/share/metainfo/net.jorjai.BONK.metainfo.xml
+    sources:
+      # CAMBIO IMPORTANTE: usar fuente remota en lugar de archivos locales
+      - type: archive
+        url: https://github.com/KingJorjai/BONK/archive/v1.1.0.tar.gz
+        sha256: [HASH_SHA256_DEL_RELEASE]
+      # O alternativamente usar git:
+      # - type: git
+      #   url: https://github.com/KingJorjai/BONK.git
+      #   tag: v1.1.0

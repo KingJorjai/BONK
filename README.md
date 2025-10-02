@@ -44,6 +44,18 @@ snap install bonk
 yay -S bonk
 ```
 
+#### Flatpak
+```bash
+# Install from local bundle
+flatpak install bonk.flatpak
+
+# Or build from source
+make all
+
+# Run the application
+flatpak run net.jorjai.BONK
+```
+
 ### Method 2: Manually download the binaries
 [![GitHub Release](https://img.shields.io/github/v/release/KingJorjai/BONK)](https://github.com/KingJorjai/BONK/releases/latest)
 ![GitHub Release Date](https://img.shields.io/github/release-date/KingJorjai/BONK)

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=BONK
+Comment=A mighty command-line tool for bonking your friends, enemies, or inanimate objects
+Exec=bonk
+Icon=net.jorjai.BONK
+Terminal=true
+Type=Application
+Categories=ConsoleOnly;Game;Utility;
+Keywords=bonk;cli;command-line;game;
+StartupNotify=false

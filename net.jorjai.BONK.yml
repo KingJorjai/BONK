@@ -1,0 +1,41 @@
+app-id: net.jorjai.BONK
+runtime: org.freedesktop.Platform
+runtime-version: '24.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+command: bonk
+
+finish-args:
+  # Network access for API calls
+  - --share=network
+  # Allow access to terminal/console
+  - --socket=session-bus
+
+build-options:
+  append-path: /usr/lib/sdk/golang/bin
+  env:
+    GOBIN: /app/bin
+    GOCACHE: /run/build/bonk/go-build-cache
+    GOMODCACHE: /run/build/bonk/go-mod-cache
+
+modules:
+  - name: bonk
+    buildsystem: simple
+    build-commands:
+      # Build the Go application using vendor dependencies (no network needed)
+      - go build -mod=vendor -o bonk -ldflags="-s -w" .
+      # Install the binary
+      - install -Dm755 bonk /app/bin/bonk
+      # Install desktop file
+      - install -Dm644 net.jorjai.BONK.desktop /app/share/applications/net.jorjai.BONK.desktop
+      # Install metainfo file
+      - install -Dm644 net.jorjai.BONK.metainfo.xml /app/share/metainfo/net.jorjai.BONK.metainfo.xml
+      # Install icon (if available)
+      - |
+        if [ -f icon.png ]; then
+          install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/net.jorjai.BONK.png
+        fi
+    sources:
+      - type: dir
+        path: .
